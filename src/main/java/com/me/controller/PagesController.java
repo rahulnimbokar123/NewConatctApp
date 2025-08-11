@@ -17,12 +17,22 @@ import com.me.service.UserService;
 
 import jakarta.servlet.http.HttpSession;
 import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 @Controller
 public class PagesController {
 
     @Autowired
     private UserService service;
+ 
+     
+    @GetMapping("/")
+    public String index(){
+
+        return "redirect:/home";
+        
+    }
 
     @RequestMapping("/home")
     public String home(Model model) {
@@ -51,9 +61,8 @@ public class PagesController {
     public String contact() {
          return new String("contact");
     }
-
  
-     @RequestMapping("/login")
+    @GetMapping("/login")  
     public String login() {
         System.out.println("logon page");
         
